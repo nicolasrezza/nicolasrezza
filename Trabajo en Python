@@ -1,0 +1,164 @@
+#08-05-2020
+#Nicolas Rezza
+#Trabajo Final ISTIC 2020
+#Profesor Gandhi Hernández
+def generar_usuario():
+  user=input("Ingrese su correo electronico\n")
+  for i in user:
+    if "@" in user:
+      arroba=1
+    else:
+      arroba=0
+  for i in user:
+    if "." in user:
+      punto=1
+    else:
+      punto=0
+  if arroba==1 and punto==1:
+    print("Correo valido")
+  else:
+    while ("@" not in user) or ("." not in user):
+      user=input("Correo invalido, ingrese uno correcto\n")
+    print("Correo valido")
+  return user
+
+def generar_pass():
+  pas=input("Ingrese su contraseña\n")
+  pas2=input("Confirme la contraseña\n")
+  while (pas!=pas2):
+    print("Las contraseña no coinciden")
+    pas=input("Ingrese su contraseña\n")
+    pas2=input("Confirme la contraseña\n")
+  "Se genero correctamente su contraseña"
+  return pas
+
+def Menu():
+  import sys
+  print ("""************
+TRABAJO FINAL || ISTIC 2020
+************
+Menu
+1) Juego
+2) Calculadora
+3) Salir""")
+  opc = int(input("Selecione Opcion\n"))
+  while (opc<1 or opc>3):
+    opc=int(input("Ingrese opcion valida\n"))
+  if opc==1:
+    juego=pptls()
+  elif opc==2:
+    print("PROGRAMA EN CONSTRUCCION")
+    Menu()
+  elif opc==3:
+    print("GRACIAS POR PARTICIPAR")
+    Menu()
+
+
+def pptls():
+  print("Vamos a jugar al piedra, papel, tijera, lagarto o spock")
+  puntopc=0
+  puntojugador=0
+  jugador=0
+  pc=0 
+  opciones = ["Piedra", "Papel", "Tijera", "Lagarto", "Spock"]
+  import random
+  eleccion = input("Escriba Piedra, Papel, Tijera, Lagarto o Spock: \n")
+  azar = random.choice(opciones)
+  while eleccion not in opciones:
+    eleccion = input("Opción no valida, ingresela correctamente\n")
+  if eleccion == azar:
+    puntopc=puntopc+0
+    puntojugador=puntojugador+0
+    print("Empate")
+
+  if (eleccion == "Piedra"):
+    if (azar == "Papel"):
+      puntopc = puntopc+1
+      print("Perdiste")
+    elif (azar == "Tijera"):
+      puntojugador=puntojugador+1
+      print("Ganaste")
+    elif (azar=="Lagarto"):
+      puntojugador=puntojugador+1
+      print("Ganaste")
+    elif (azar=="Spock"):
+      puntopc = puntopc+1
+      print("Perdiste")
+
+  if (eleccion == "Papel"):
+    if (azar == "Tijera"):
+      puntopc = puntopc+1
+      print("Perdiste")
+    elif (azar == "Piedra"):
+      puntojugador=puntojugador+1
+      print("Ganaste")
+    elif (azar=="Spock"):
+      puntojugador=puntojugador+1
+      print("Ganaste")
+    elif (azar=="Lagarto"):
+      puntopc = puntopc+1
+      print("Perdiste")
+
+  if (eleccion == "Tijera"):
+    if (azar == "Piedra"):
+      puntopc = puntopc+1
+      print("Perdiste")
+    elif (azar == "Papel"):
+      puntojugador=puntojugador+1
+      print("Ganaste")
+    elif (azar=="Lagarto"):
+      puntojugador=puntojugador+1
+      print("Ganaste")
+    elif (azar=="Spock"):
+      puntopc = puntopc+1
+      print("Perdiste")
+
+  if (eleccion == "Lagarto"):
+    if (azar == "Piedra"):
+      puntopc = puntopc+1
+      print("Perdiste")
+    elif (azar == "Papel"):
+      puntojugador=puntojugador+1
+      print("Ganaste")
+    elif (azar=="Tijera"):
+      puntopc = puntopc+1
+      print("Perdiste")
+    elif (azar=="Spock"):
+      puntojugador=puntojugador+1
+      print("Ganaste")
+  
+  if (eleccion == "Spock"):
+    if (azar == "Piedra"):
+      puntojugador=puntojugador+1
+      print("Ganaste")
+    elif (azar == "Papel"):
+      puntopc = puntopc+1
+      print("Perdiste")
+    elif (azar=="Tijera"):
+      puntojugador=puntojugador+1
+      print("Ganaste")
+    elif (azar=="Lagarto"):
+      puntopc = puntopc+1
+      print("Perdiste")
+  print(f"La PC eligió {azar}")
+  print("El juego termino")
+  print(f"Puntos del jugador: {puntojugador}")
+  print(f"Puntos de la PC: {puntopc}")
+  return puntopc
+  
+print("Bienvenido al programa")
+print("Debe loguearse para comenzar a jugar")
+usuario=generar_usuario()
+password=generar_pass()
+Menu()
+pregunta=input("Presione S si desea jugar nuevamente, presione N para volver al menu\n")
+if pregunta == "S":
+  juego=pptls()
+elif pregunta == "N":
+  Menu()
+while pregunta!= "S" or pregunta!="N":
+  pregunta=input("Presione S si desea jugar nuevamente, presione N para volver al menu\n")
+  if pregunta == "S":
+    juego=pptls()
+  elif pregunta == "N":
+    Menu()
